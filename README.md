@@ -1,4 +1,4 @@
-# Dynamic-Digit-Recognition
+# Dynamic-Digit-Recognition--BUDDHI
 
 ## Link to updated project
 https://github.com/catsandsoup32/HME_Training
