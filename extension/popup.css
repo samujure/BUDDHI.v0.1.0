@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 720px;
+  background: linear-gradient(160deg, #060c1a 0%, #0b1628 55%, #0f1f38 100%);
+  font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  gap: 10px;
+  padding: 12px 0 14px;
+}
+
+/* ── toolbar ─────────────────────────────────────────────────── */
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 16px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 50px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.tool-btn {
+  background: rgba(255, 255, 255, 0.04);
+  color: #a8c0e0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
+}
+
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
+.tool-btn.active {
+  background: rgba(233, 69, 96, 0.22);
+  border-color: rgba(233, 69, 96, 0.5);
+  color: #f87f95;
+  box-shadow: 0 0 14px rgba(233, 69, 96, 0.3);
+}
+
+.size-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  margin-left: 6px;
+  letter-spacing: 0.04em;
+}
+
+#pen-size {
+  width: 72px;
+  accent-color: #e94560;
+  cursor: pointer;
+}
+
+.predict-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, #e94560 0%, #c1304a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 7px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(233, 69, 96, 0.35);
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.predict-btn:hover {
+  box-shadow:
+    0 0 0 1px rgba(233, 69, 96, 0.45),
+    0 4px 22px rgba(233, 69, 96, 0.6),
+    0 8px 44px rgba(233, 69, 96, 0.22);
+  transform: translateY(-1px);
+}
+
+.predict-btn:active  { transform: translateY(0); }
+
+.predict-btn:disabled {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+}
+
+.status {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* ── canvas ──────────────────────────────────────────────────── */
+#draw-canvas {
+  display: block;
+  width: 720px;
+  height: 320px;
+  /* MUST stay pure white — CNN model trained on white background images */
+  background: #ffffff;
+  cursor: crosshair;
+  border-top:    1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 6px 40px rgba(0, 0, 0, 0.55),
+    0 -2px 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+
+/* Glow applied while the user is actively drawing */
+#draw-canvas.drawing {
+  border-top-color:    rgba(74, 158, 255, 0.45);
+  border-bottom-color: rgba(74, 158, 255, 0.45);
+  box-shadow:
+    0 0 0 2px rgba(74, 158, 255, 0.55),
+    0 0 32px rgba(74, 158, 255, 0.2),
+    0 6px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ── output panel ────────────────────────────────────────────── */
+#output-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+  padding: 18px 28px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  gap: 8px;
+  min-height: 110px;
+}
+
+#latex-render {
+  width: 100%;
+  text-align: center;
+  color: #e2e8f0;
+  min-height: 48px;
+}
+
+/* KaTeX display sizing */
+#latex-render .katex-display { margin: 0; }
+#latex-render .katex { font-size: 2em; }
+
+#answer-row {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+#answer-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f87f95;
+  letter-spacing: 0.02em;
+}
+
+#latex-raw-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 2px;
+}
+
+#latex-raw {
+  font-family: 'Consolas', 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.38);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 4px 10px;
+  word-break: break-all;
+  flex: 1;
+  line-height: 1.5;
+}
+
+#btn-copy {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+#btn-copy:hover {
+  background: rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+}

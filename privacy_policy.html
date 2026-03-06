@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InkTeX — Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f8f9fb;
+      color: #1a202c;
+      line-height: 1.7;
+      padding: 48px 20px 80px;
+    }
+
+    .card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 48px 52px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: #060c1a;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .logo-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #060c1a;
+      letter-spacing: -0.3px;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0d1421;
+      margin-bottom: 6px;
+      letter-spacing: -0.4px;
+    }
+
+    .effective {
+      font-size: 13px;
+      color: #718096;
+      margin-bottom: 36px;
+    }
+
+    .highlight {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 36px;
+      font-size: 15px;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 650;
+      color: #1a202c;
+      margin: 28px 0 10px;
+      letter-spacing: -0.1px;
+    }
+
+    p, li {
+      font-size: 15px;
+      color: #4a5568;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+
+    li { margin-bottom: 5px; }
+
+    .accent { color: #e94560; font-weight: 600; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 36px 0;
+    }
+
+    .contact {
+      font-size: 14px;
+      color: #718096;
+    }
+
+    .contact a { color: #3b82f6; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="logo">
+      <div class="logo-mark">∫</div>
+      <span class="logo-name">InkTeX</span>
+    </div>
+
+    <h1>Privacy Policy</h1>
+    <p class="effective">Effective date: March 5, 2026</p>
+
+    <div class="highlight">
+      ✦ InkTeX collects <strong>no user data whatsoever</strong>. Everything
+      happens locally on your device. Nothing is ever transmitted to any server.
+    </div>
+
+    <h2>What InkTeX Does</h2>
+    <p>
+      InkTeX is a Chrome extension that lets you draw mathematical equations
+      on an HTML5 canvas, recognises the symbols using a locally-running neural
+      network, and returns a LaTeX string and numerical answer — all inside
+      your browser.
+    </p>
+
+    <h2>Data Collection</h2>
+    <p>InkTeX does <span class="accent">not</span> collect, store, transmit,
+    or share any of the following:</p>
+    <ul>
+      <li>Drawings or canvas content</li>
+      <li>Equations or mathematical expressions</li>
+      <li>LaTeX strings or computed answers</li>
+      <li>Browsing history or page content</li>
+      <li>Device identifiers or IP addresses</li>
+      <li>Cookies or any persistent local storage</li>
+    </ul>
+
+    <h2>Local Processing Only</h2>
+    <p>
+      All inference is performed entirely on-device via
+      <strong>ONNX Runtime WebAssembly</strong>. The trained model
+      (<code>.onnx</code>) and all JavaScript assets are bundled with the
+      extension and loaded from your local machine. No network request is made
+      during symbol recognition or expression evaluation.
+    </p>
+
+    <h2>Permissions</h2>
+    <p>
+      InkTeX requests <span class="accent">no browser permissions</span>.
+      It does not request access to tabs, browsing history, clipboard
+      (the copy button uses the standard Web Clipboard API, which operates
+      locally), or any other sensitive browser APIs.
+    </p>
+
+    <h2>Third-Party Services</h2>
+    <p>
+      InkTeX uses no third-party analytics, advertising, or tracking services.
+      The extension loads the <strong>DM Sans</strong> typeface from Google
+      Fonts on first open — this is the only outbound request the extension
+      makes, and it is a standard font CDN request that carries no user-
+      identifying payload beyond your IP address. It can be avoided entirely
+      by using the extension offline, in which case system fonts are used as
+      fallback.
+    </p>
+
+    <h2>Children's Privacy</h2>
+    <p>
+      Because InkTeX collects no data at all, it has no special considerations
+      with respect to children's privacy.
+    </p>
+
+    <h2>Changes to This Policy</h2>
+    <p>
+      If this policy ever changes, the updated version will be posted at this
+      URL with a revised effective date. Given that InkTeX collects no data,
+      material changes are unlikely.
+    </p>
+
+    <hr />
+
+    <p class="contact">
+      Questions? Open an issue at
+      <a href="https://github.com/samujure/BUDDHI.v0.1.0" target="_blank">
+        github.com/samujure/BUDDHI.v0.1.0
+      </a>.
+    </p>
+
+  </div>
+</body>
+</html>

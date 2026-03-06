@@ -1,0 +1,33 @@
+InkTeX — Handwritten Math to LaTeX
+
+Draw any math equation on the canvas using your mouse or stylus. InkTeX
+instantly recognises each symbol using a trained neural network, converts
+the expression to LaTeX, renders it beautifully, and computes a numerical
+answer — all locally in your browser with no server or internet required.
+
+FEATURES
+• Draw equations freehand — digits, Greek letters, trig functions, integrals,
+  fractions, exponents, and more (72 symbol classes)
+• Instant LaTeX output rendered with KaTeX
+• Numerical evaluation: 4+4 → 8, sin(π) → 0, (1/2)^2 → 0.25
+• One-click Copy button for the raw LaTeX string
+• Undo (Ctrl+Z), eraser, adjustable pen size
+• Fully offline — CNN inference runs via ONNX Runtime WebAssembly
+• Clean white drawing canvas optimised for symbol recognition
+
+HOW TO USE
+1. Click the InkTeX icon in your toolbar
+2. Draw a mathematical expression on the white canvas
+3. Click Solve
+4. See the rendered LaTeX and computed answer
+5. Hit Copy to paste the LaTeX into your document or editor
+
+PRIVACY
+No data ever leaves your browser. Inference runs entirely on-device via
+WebAssembly. No accounts, no telemetry, no network requests.
+
+SYMBOL SUPPORT
+Numbers (0–9), basic operators (+, −, ×, /), parentheses, equals,
+letters (a–z, A–Z subset), Greek (α β γ δ θ λ μ π φ σ Δ),
+functions (sin cos tan log), calculus (∫ ∑ lim d), set notation,
+arrows, and more.

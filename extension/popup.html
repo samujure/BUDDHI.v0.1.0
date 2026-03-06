@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>InkTeX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" />
+  <link rel="stylesheet" href="lib/katex/katex.min.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="toolbar">
+    <button id="btn-pen"    class="tool-btn active" title="Pen">&#9998;</button>
+    <button id="btn-eraser" class="tool-btn"         title="Eraser">&#9003;</button>
+    <button id="btn-undo"   class="tool-btn"         title="Undo (Ctrl+Z)">&#8617;</button>
+    <button id="btn-clear"  class="tool-btn"         title="Clear">&#9724;</button>
+    <label for="pen-size" class="size-label">Size</label>
+    <input  id="pen-size" type="range" min="2" max="20" value="5" />
+    <button id="btn-predict" class="predict-btn">Solve</button>
+    <label id="status" class="status"></label>
+  </div>
+
+  <canvas id="draw-canvas"></canvas>
+
+  <div id="output-panel">
+    <div id="latex-render"></div>
+    <div id="answer-row">= <span id="answer-value">—</span></div>
+    <div id="latex-raw-row">
+      <code id="latex-raw"></code>
+      <button id="btn-copy" title="Copy LaTeX">Copy</button>
+    </div>
+  </div>
+
+  <!-- ONNX Runtime Web: download ort.min.js from the onnxruntime-web npm package -->
+  <script src="lib/ort.min.js"></script>
+  <!-- KaTeX -->
+  <script src="lib/katex/katex.min.js"></script>
+  <!-- math.js for expression evaluation -->
+  <script src="lib/math.js"></script>
+  <script src="solver.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

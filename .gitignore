@@ -1,6 +1,26 @@
+# Training data (large — regenerate or download separately)
+data/
 data.rar
 data\
 data\extracted_images\
 data\extracted_images_new\
+
+# PyTorch checkpoints (large binaries — regenerate via NEW_train.py)
+*.pt
+*.pth
+NEW_save_states/
+
+# Python cache
 __pycache__/
+*.py[cod]
+*.pyo
+
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Archives / misc
+*.zip
 archives_81class\
+.DS_Store
+Thumbs.db
